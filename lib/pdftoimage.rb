@@ -21,7 +21,7 @@ module PDFToImage
 
     begin
         tmp = `identify -version 2>&1`
-        raise(PDFToImage::PDFError, "ImageMagick not installed") unless tmp.index('ImageMagick')
+        raise(PDFToImage::PDFError, "ImageMagick not installed") unless tmp.index('ImageMagick') || tmp.index('GraphicsMagick')
     rescue Errno::ENOENT
         raise PDFToImage::PDFError, "ImageMagick not installed"
     end
